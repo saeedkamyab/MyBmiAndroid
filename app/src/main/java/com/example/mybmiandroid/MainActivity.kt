@@ -9,6 +9,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.EditText
 import com.example.mybmiandroid.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +35,14 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null)
                 .setAnchorView(R.id.fab).show()
         }
+        val weightTextBox=findViewById<EditText>(R.id.weightTextbox)
+        val HeightTextBox=findViewById<EditText>(R.id.HeightTextbox)
+        val BtnCal=findViewById<Button>(R.id.BtnCalculate)
+        BtnCal.setOnClickListener{
+            val w=weightTextBox.text.toString().toDouble()
+            val h=HeightTextBox.text.toString().toDouble()
+            val res=w/(h*h)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -56,4 +66,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+
 }
