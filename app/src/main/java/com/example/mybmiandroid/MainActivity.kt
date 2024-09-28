@@ -1,5 +1,6 @@
 package com.example.mybmiandroid
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -24,17 +25,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
-        }
+
         val weightTextBox=findViewById<EditText>(R.id.weightTextbox)
         val HeightTextBox=findViewById<EditText>(R.id.HeightTextbox)
         val BtnCal=findViewById<Button>(R.id.BtnCalculate)
@@ -42,6 +39,9 @@ class MainActivity : AppCompatActivity() {
             val w=weightTextBox.text.toString().toDouble()
             val h=HeightTextBox.text.toString().toDouble()
             val res=w/(h*h)
+            val myIntent=Intent(this,MainActivity2::class.java)
+            myIntent.putExtra("bmi",res)
+            startActivity(myIntent)
         }
     }
 

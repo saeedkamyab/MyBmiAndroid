@@ -38,7 +38,7 @@
             android:ems="10"
             android:hint="0 m"
 
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
